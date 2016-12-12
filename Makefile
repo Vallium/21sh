@@ -6,14 +6,15 @@
 #    By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/21 15:39:41 by aalliot           #+#    #+#              #
-#    Updated: 2016/12/12 16:43:01 by aalliot          ###   ########.fr        #
+#    Updated: 2016/12/12 18:44:21 by aalliot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= 21sh
 NAME_DEBUG	= 21sh_debug
  
-SRC			= 	main.c
+SRC			=	main.c		\
+				ft_term.c
 
 HEAD_DIR	= includes
 SRC_DIR		= src
