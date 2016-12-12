@@ -6,7 +6,7 @@
 /*   By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/12 16:37:05 by aalliot           #+#    #+#             */
-/*   Updated: 2016/12/12 18:44:38 by aalliot          ###   ########.fr       */
+/*   Updated: 2016/12/12 18:57:11 by aalliot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <termios.h>
+# include <term.h>
 # include <sys/ioctl.h>
 # include <unistd.h>
 
@@ -35,6 +36,7 @@ typedef struct termios t_termios;
 typedef struct		s_term
 {
 	t_termios		term;
+	t_termios		default_term;
 	int				fd;
 	char			*name;
 }					t_term;
