@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_hook.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/12 16:38:14 by aalliot           #+#    #+#             */
-/*   Updated: 2016/12/13 15:14:44 by aalliot          ###   ########.fr       */
+/*   Created: 2016/12/13 12:16:31 by aalliot           #+#    #+#             */
+/*   Updated: 2016/12/13 12:17:20 by aalliot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <21sh.h>
 
-int		main()
+void	init_hook(void)
 {
-	t_term	*term;
-
-	init_hook();
-	term = ft_term();
-	while (42)
-	{
-		ft_putstr("21sh>");
-		if (get_key_hook() == -1)
-			break ;
-	}
-	tcsetattr(0, TCSADRAIN, &(term->default_term));
-	return (0);
+	init_term();
+	init_cmd();
 }

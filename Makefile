@@ -6,7 +6,7 @@
 #    By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/21 15:39:41 by aalliot           #+#    #+#              #
-#    Updated: 2016/12/12 18:44:21 by aalliot          ###   ########.fr        #
+#    Updated: 2016/12/13 12:30:36 by aalliot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,13 @@ NAME		= 21sh
 NAME_DEBUG	= 21sh_debug
  
 SRC			=	main.c		\
-				ft_term.c
+				ft_term.c	\
+				get_key_hook.c	\
+				init_cmd.c		\
+				init_hook.c		\
+				init_term.c		\
+				printable_key_hook.c
+
 
 HEAD_DIR	= includes
 SRC_DIR		= src
@@ -37,7 +43,7 @@ endif
 ifeq ($(UNAME_S),Darwin)
 	INCLUDES	=
 	LIBS		=
-	FLAGS		= -Wall -Wextra -Werror
+	FLAGS		= -Wall -Wextra # -Werror
 endif
 
 OBJ			= $(patsubst %.c,$(STATIC_DIR)/%.o,$(SRC))
