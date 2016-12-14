@@ -12,12 +12,15 @@
 
 #include <21sh.h>
 
-void		init_cmd(void)
+int		init_cmd(void)
 {
 	t_term	*term;
 
 	term = ft_term();
-	term->cmd.cmd = NULL;
-	term->cmd.cursor = NULL;
-	term->cmd.len = 0;
+	term->cmd.first = NULL;
+	if (!(term->cmd.cursor = ft_lstdnew(NULL, sizeof(int))))
+		return (-1);
+	ft_lstdadd(&(term->cmd.first), term->cmd.cursor, 1);
+	term->cmd.last = term->cmd.cursor;
+	return (1);
 }

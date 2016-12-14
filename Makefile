@@ -6,7 +6,7 @@
 #    By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/21 15:39:41 by aalliot           #+#    #+#              #
-#    Updated: 2016/12/13 12:30:36 by aalliot          ###   ########.fr        #
+#    Updated: 2016/12/14 15:18:45 by aalliot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,13 @@ SRC			=	main.c		\
 				init_cmd.c		\
 				init_hook.c		\
 				init_term.c		\
-				printable_key_hook.c
+				printable_key_hook.c \
+				tputc.c		\
+				ft_tputs.c		\
+				move_cursor_left.c		\
+				move_cursor_right.c		\
+				arrow_left_hook.c		\
+				arrow_right_hook.c
 
 
 HEAD_DIR	= includes

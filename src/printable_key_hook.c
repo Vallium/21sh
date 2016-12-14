@@ -12,26 +12,26 @@
 
 #include <21sh.h>
 
-int		add_key_to_cmd(char *key)
+int		add_key_to_cmd(int key)
 {
 	t_term	*term;
 	t_lstd	*tmp;
+	char	str[2];
 
 	term = ft_term();
-	if (!(tmp = ft_lstdnew(key, sizeof(char *))))
+	str[0] = key;
+	if (!(tmp = ft_lstdnew(ft_strdup(str), sizeof(char *))))
 		return (-1);
-	ft_lstdadd(&(term->cmd.cursor), tmp);
-	term->cmd.cursor = tmp;
-	if (term->cmd.cmd == NULL)
-		term->cmd.cmd = tmp;
-	term->cmd.len++;
+	ft_lstdadd(&(term->cmd.cursor), tmp, 1);
+	if (!tmp->prev)
+		term->cmd.first = tmp;
 	return (1);
 }
 
-int		printable_key_hook(char *key)
+int		printable_key_hook(int key)
 {
 	if (add_key_to_cmd(key) == -1)
 		exit(EXIT_FAILURE);
-	ft_putchar(key[0]);
+	ft_putchar(key);
 	return (1);
 }
