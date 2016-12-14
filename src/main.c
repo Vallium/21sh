@@ -21,9 +21,9 @@ int		main()
 	winsize();
 	while (42)
 	{
-		char *prompt = ft_strdup("21sh>");
+		char *prompt = ft_strdup("21sh> ");
 		ft_putstr(prompt);
-		term->cursor_padd = ft_strlen(prompt);
+		term->cursor_padd = ft_strlen(prompt) + 1;
 		if (get_key_hook() == -1)
 			break ;
 	}

@@ -12,6 +12,25 @@
 
 #include <21sh.h>
 
+static void		delete_on_cursor()
+{
+	ft_tputs("dc");
+}
+
+static void		delete_before_cursor()
+{
+
+}
+
+int			delete(int key)
+{
+	if (key == K_DELETE)
+		delete_on_cursor();
+	else
+		delete_before_cursor();
+	return (1);	
+}
+
 int			get_key_hook()
 {
 	int		key;
@@ -28,10 +47,12 @@ int			get_key_hook()
 			arrow_left_hook();
 		else if (key == K_RIGHT)
 			arrow_right_hook();
-		else if (key == K_RETURN)
-		{
-			printf("\n%zd | %d\n", term->cursor_padd, term->winsize.ws_col);
-		}
+		else if (key == K_DELETE || key == K_BACKSPACE)
+			delete(key);
+		// else if (key == K_RETURN)
+		// {
+		// 	printf("\n%zd | %d\n", term->cursor_padd, term->winsize.ws_col);
+		// }
 		// else if (key == K_CTRL_D)
 		// 	exit(0);
 		// 	t_lstd	*lst = term->cmd.first;
