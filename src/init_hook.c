@@ -14,6 +14,7 @@
 
 void	init_hook(void)
 {
+	init_signals();
 	init_term();
 	init_cmd();
 }

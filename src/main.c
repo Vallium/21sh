@@ -18,9 +18,12 @@ int		main()
 
 	init_hook();
 	term = ft_term();
+	winsize();
 	while (42)
 	{
-		ft_putstr("21sh>");
+		char *prompt = ft_strdup("21sh>");
+		ft_putstr(prompt);
+		term->cursor_padd = ft_strlen(prompt);
 		if (get_key_hook() == -1)
 			break ;
 	}

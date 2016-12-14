@@ -6,7 +6,7 @@
 #    By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/21 15:39:41 by aalliot           #+#    #+#              #
-#    Updated: 2016/12/14 15:18:45 by aalliot          ###   ########.fr        #
+#    Updated: 2016/12/14 15:59:25 by aalliot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,10 @@ SRC			=	main.c		\
 				move_cursor_left.c		\
 				move_cursor_right.c		\
 				arrow_left_hook.c		\
-				arrow_right_hook.c
+				arrow_right_hook.c		\
+				init_signals.c			\
+				ft_error.c				\
+				winsize.c
 
 
 HEAD_DIR	= includes

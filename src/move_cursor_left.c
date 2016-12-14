@@ -9,6 +9,7 @@ int		move_cursor_left(void)
 	{
 		term->cmd.cursor = (term->cmd.cursor)->prev;
 		ft_tputs("le");
+		term->cursor_padd--;
 	}
 	return (1);
 }

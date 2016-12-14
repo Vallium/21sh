@@ -32,7 +32,8 @@
 # define K_BACKSPACE 127
 # define K_CTRL_D 4
 
-typedef struct termios t_termios;
+typedef struct termios	t_termios;
+typedef struct winsize	t_winsize;
 
 typedef struct		s_cmd
 {
@@ -45,9 +46,11 @@ typedef struct		s_term
 {
 	t_termios		term;
 	t_termios		default_term;
+	t_winsize		winsize;
 	t_cmd			cmd;
 	int				fd;
 	char			*name;
+	size_t			cursor_padd;
 }					t_term;
 
 t_term		*ft_term(void);
@@ -66,5 +69,9 @@ int		move_cursor_right(void);
 void		init_hook(void);
 int			init_cmd(void);
 int			init_term(void);
+
+void	winsize(void);
+void	ft_error(char *err);
+void	init_signals(void);
 
 #endif

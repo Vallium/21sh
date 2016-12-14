@@ -35,6 +35,7 @@ int		init_term(void)
 	//term->term.c_oflag &= OPOST;
 	term->term.c_cc[VMIN] = 1;
 	term->term.c_cc[VTIME] = 0;
+	term->cursor_padd = 0;
 	tcsetattr(0, TCSADRAIN, &(term->term));
 	return (0);
 }
