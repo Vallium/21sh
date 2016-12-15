@@ -37,14 +37,16 @@ int		printable_key_hook(int key)
 		exit(EXIT_FAILURE);
 	term = ft_term();
 	term->cursor_padd++;
-	str[0] = key;
-	str[1] = 0;
-	tputs(str, 0, tputc);
-	if (term->cursor_padd > term->winsize.ws_col)
-	{
-		term->cursor_padd = 1;
-		ft_tputs("cr");	
-		ft_tputs("do");	
-	}
+	refresh_line_from_cursor();
+
+	// str[0] = key;
+	// str[1] = 0;
+	// tputs(str, 0, tputc);
+	// if (term->cursor_padd > term->winsize.ws_col)
+	// {
+	// 	term->cursor_padd = 1;
+	// 	ft_tputs("cr");	
+	// 	ft_tputs("do");
+	// }
 	return (1);
 }

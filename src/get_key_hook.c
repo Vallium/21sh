@@ -39,6 +39,7 @@ int			get_key_hook()
 	term = ft_term();
 	while (42)
 	{
+		key = 0;
 		read(0, &key, sizeof(int));
 		// printf("%d\n", key);
 		if (ft_isprint(key))
@@ -47,12 +48,13 @@ int			get_key_hook()
 			arrow_left_hook();
 		else if (key == K_RIGHT)
 			arrow_right_hook();
-		else if (key == K_DELETE || key == K_BACKSPACE)
-			delete(key);
-		// else if (key == K_RETURN)
-		// {
-		// 	printf("\n%zd | %d\n", term->cursor_padd, term->winsize.ws_col);
-		// }
+		else if (key == K_RETURN)
+		{
+			refresh_line_from_cursor();
+			// printf("\n%zd | %d\n", term->cursor_padd, term->winsize.ws_col);
+		}
+		// else if (key == K_DELETE || key == K_BACKSPACE)
+		// 	delete(key);
 		// else if (key == K_CTRL_D)
 		// 	exit(0);
 		// 	t_lstd	*lst = term->cmd.first;
@@ -66,7 +68,6 @@ int			get_key_hook()
 		// }
 		// else if (key[0] == K_ESC)
 		// 	break;
-		key = 0;
 	}
 	return (-1);
 }

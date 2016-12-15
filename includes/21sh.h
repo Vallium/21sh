@@ -30,7 +30,9 @@
 # define K_SPACE 32
 # define K_DELETE 2117294875
 # define K_BACKSPACE 127
+# define K_CTRL_A 1
 # define K_CTRL_D 4
+# define K_CTRL_E 5
 
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
@@ -73,5 +75,9 @@ int			init_term(void);
 void	winsize(void);
 void	ft_error(char *err);
 void	init_signals(void);
+
+int		refresh_line_from_cursor();
+
+void	ft_restore_cursor();
 
 #endif

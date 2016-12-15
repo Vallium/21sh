@@ -28,7 +28,8 @@ SRC			=	main.c		\
 				arrow_right_hook.c		\
 				init_signals.c			\
 				ft_error.c				\
-				winsize.c
+				winsize.c				\
+				refresh_line_from_cursor.c	
 
 HEAD_DIR	= includes
 SRC_DIR		= src
