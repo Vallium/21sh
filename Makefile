@@ -30,7 +30,6 @@ SRC			=	main.c		\
 				ft_error.c				\
 				winsize.c
 
-
 HEAD_DIR	= includes
 SRC_DIR		= src
 DEBUG_DIR	= debug
@@ -63,6 +62,7 @@ CC			= gcc
 OPTI		= -O3
 DEPENDS 	= -MT $@ -MD -MP -MF $(subst .o,.d,$@)
 
+EXTERN_LIBS = -ltermcap
 
 $(shell mkdir -p $(STATIC_DIR) $(DEBUG_DIR) $(DEP_DIR))
 
@@ -71,11 +71,11 @@ $(shell mkdir -p $(STATIC_DIR) $(DEBUG_DIR) $(DEP_DIR))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB_STATIC)
-	$(CC) $(FLAGS) $(OPTI) -I $(HEAD_DIR) -I $(LIB_HEAD) -lncurses -o $@ $(OBJ) $(LIB_STATIC)
+	$(CC) $(FLAGS) $(OPTI) $(EXTERN_LIBS) -I $(HEAD_DIR) -I $(LIB_HEAD) -o $@ $(OBJ) $(LIB_STATIC)
 	@echo "Compilation complete. (realease)"
 
 debug: $(OBJ_DEBUG) $(LIB_DEBUG)
-	$(CC) $(FLAGS) $(OPTI) -I $(HEAD_DIR) -I $(LIB_HEAD) -lncurses -o $(NAME_DEBUG) $(OBJ_DEBUG) $(LIB_DEBUG) -g
+	$(CC) $(FLAGS) $(OPTI) $(EXTERN_LIBS) -I $(HEAD_DIR) -I $(LIB_HEAD) -o $(NAME_DEBUG) $(OBJ_DEBUG) $(LIB_DEBUG) -g
 	@echo "Compilation complete. (debug)"
 
 -include $(OBJ:.o=.d)
