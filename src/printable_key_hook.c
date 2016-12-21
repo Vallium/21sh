@@ -30,7 +30,6 @@ int		add_key_to_cmd(int key)
 
 int		printable_key_hook(int key)
 {
-	char str[2];
 	t_term	*term;
 
 	if (add_key_to_cmd(key) == -1)
