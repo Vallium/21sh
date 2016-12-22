@@ -12,6 +12,13 @@
 
 #include <21sh.h>
 
+void		cmd_delone(void *content, size_t size)
+{
+	(void)size;
+	free(content);
+	content = NULL;
+}
+
 static void		delete_on_cursor()
 {
 	ft_tputs("dc");
@@ -19,7 +26,14 @@ static void		delete_on_cursor()
 
 static void		delete_before_cursor()
 {
+	t_term	*term;
 
+	term =	 ft_term();
+	if (term->cmd.cursor->prev)
+	{
+		ft_lstddelone(&(term->cmd.cursor->prev), cmd_delone);
+		refresh_line_from_cursor(CURSOR_PREV);
+	}
 }
 
 int			delete(int key)
@@ -50,11 +64,11 @@ int			get_key_hook()
 			arrow_right_hook();
 		else if (key == K_RETURN)
 		{
-			refresh_line_from_cursor();
+			// refresh_line_from_cursor();
 			// printf("\n%zd | %d\n", term->cursor_padd, term->winsize.ws_col);
 		}
-		// else if (key == K_DELETE || key == K_BACKSPACE)
-		// 	delete(key);
+		else if (key == K_DELETE || key == K_BACKSPACE)
+			delete(key);
 		// else if (key == K_CTRL_D)
 		// 	exit(0);
 		// 	t_lstd	*lst = term->cmd.first;

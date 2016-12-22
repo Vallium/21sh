@@ -20,6 +20,7 @@ int		add_key_to_cmd(int key)
 
 	term = ft_term();
 	str[0] = key;
+	str[1] = 0;
 	if (!(tmp = ft_lstdnew(ft_strdup(str), sizeof(char *))))
 		return (-1);
 	ft_lstdadd(&(term->cmd.cursor), tmp, 1);
@@ -30,13 +31,10 @@ int		add_key_to_cmd(int key)
 
 int		printable_key_hook(int key)
 {
-	t_term	*term;
-
 	if (add_key_to_cmd(key) == -1)
 		exit(EXIT_FAILURE);
-	term = ft_term();
-	term->cursor_padd++;
-	refresh_line_from_cursor();
+	// term->cursor_padd++;
+	refresh_line_from_cursor(CURSOR_NEXT);
 
 	// str[0] = key;
 	// str[1] = 0;
