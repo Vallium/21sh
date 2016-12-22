@@ -45,6 +45,15 @@ int			delete(int key)
 	return (1);	
 }
 
+int			move_cursor_termination(int key)
+{
+	if (key == K_HOME || key == K_CTRL_A)
+		move_cursor_home();
+	else if (key == K_END || key == K_CTRL_E)
+		move_cursor_end();
+	return (1);
+}
+
 int			get_key_hook()
 {
 	int		key;
@@ -69,6 +78,8 @@ int			get_key_hook()
 		}
 		else if (key == K_DELETE || key == K_BACKSPACE)
 			delete(key);
+		else if (key == K_HOME || key == K_CTRL_A || key == K_END || key == K_CTRL_E)
+			move_cursor_termination(key);
 		// else if (key == K_CTRL_D)
 		// 	exit(0);
 		// 	t_lstd	*lst = term->cmd.first;

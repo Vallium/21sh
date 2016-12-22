@@ -6,7 +6,7 @@
 #    By: aalliot <aalliot@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/09/21 15:39:41 by aalliot           #+#    #+#              #
-#    Updated: 2016/12/14 15:59:25 by aalliot          ###   ########.fr        #
+#    Updated: 2016/12/22 12:17:15 by aalliot          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRC			=	main.c		\
 				ft_tputs.c		\
 				move_cursor_left.c		\
 				move_cursor_right.c		\
+				move_cursor_home.c		\
+				move_cursor_end.c		\
 				arrow_left_hook.c		\
 				arrow_right_hook.c		\
 				init_signals.c			\

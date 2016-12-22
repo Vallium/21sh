@@ -32,6 +32,8 @@
 # define K_BACKSPACE 127
 # define K_CTRL_A 1
 # define K_CTRL_D 4
+# define K_HOME 4741915
+# define K_END 4610843
 # define K_CTRL_E 5
 
 enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV};
@@ -69,6 +71,8 @@ int	arrow_right_hook(void);
 
 int		move_cursor_left(void);
 int		move_cursor_right(void);
+int		move_cursor_home(void);
+int		move_cursor_end(void);
 
 void		init_hook(void);
 int			init_cmd(void);

@@ -19,5 +19,7 @@ int		move_cursor_right(void)
 		// else
 			ft_tputs("nd");
 	}
+	else
+		return (0);
 	return (1);
 }

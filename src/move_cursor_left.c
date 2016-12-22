@@ -18,5 +18,7 @@ int		move_cursor_left(void)
 		// else
 		ft_tputs("le");
 	}
+	else
+		return (0);
 	return (1);
 }
