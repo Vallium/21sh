@@ -26,6 +26,8 @@ int		add_key_to_cmd(int key)
 	ft_lstdadd(&(term->cmd.cursor), tmp, 1);
 	if (!tmp->prev)
 		term->cmd.first = tmp;
+	if (!tmp->next)
+		term->cmd.last = tmp;
 	return (1);
 }
 

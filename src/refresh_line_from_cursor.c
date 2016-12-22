@@ -20,18 +20,15 @@ int		refresh_line_from_cursor(int cursor_pos)
 	t_lstd	*cmd;
 
 	term = ft_term();
-	cmd = term->cmd.cursor;
-	if (cmd->prev)
-		cmd = cmd->prev;
+	cmd = term->cmd.cursor->prev;
 	if (cursor_pos == CURSOR_PREV)
 	{
-		if (cmd && cmd->next)
-			cmd = cmd->next;
+		cmd = term->cmd.cursor;
 		ft_tputs("le");
 	}
 	tputs(SAVE_CURSOR, 0, tputc);
 	tputs(ERASE_DOWN, 0, tputc);
-	while (cmd && cmd->content != NULL)
+	while (cmd && cmd->content)
 	{
 		tputs(cmd->content, 0, tputc);
 		cmd = cmd->next;

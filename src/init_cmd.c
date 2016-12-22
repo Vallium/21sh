@@ -20,7 +20,6 @@ int		init_cmd(void)
 	term->cmd.first = NULL;
 	if (!(term->cmd.cursor = ft_lstdnew(NULL, sizeof(int))))
 		return (-1);
-	ft_lstdadd(&(term->cmd.first), term->cmd.cursor, 1);
 	term->cmd.last = term->cmd.cursor;
 	return (1);
 }
