@@ -36,7 +36,7 @@
 # define K_END 4610843
 # define K_CTRL_E 5
 
-enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV};
+enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV, CURSOR_DEF};
 
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
@@ -73,6 +73,9 @@ int		move_cursor_left(void);
 int		move_cursor_right(void);
 int		move_cursor_home(void);
 int		move_cursor_end(void);
+
+int		move_cursor_termination(int key);
+int		cursor_delete(int key);
 
 void		init_hook(void);
 int			init_cmd(void);

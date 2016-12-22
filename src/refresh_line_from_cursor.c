@@ -21,11 +21,10 @@ int		refresh_line_from_cursor(int cursor_pos)
 
 	term = ft_term();
 	cmd = term->cmd.cursor->prev;
-	if (cursor_pos == CURSOR_PREV)
-	{
+	if (cursor_pos == CURSOR_PREV || cursor_pos == CURSOR_DEF)
 		cmd = term->cmd.cursor;
+	if (cursor_pos == CURSOR_PREV)
 		ft_tputs("le");
-	}
 	tputs(SAVE_CURSOR, 0, tputc);
 	tputs(ERASE_DOWN, 0, tputc);
 	while (cmd && cmd->content)
