@@ -33,6 +33,9 @@ int			get_key_hook()
 			arrow_right_hook();
 		else if (key == K_RETURN)
 		{
+			/*
+			** Append command line to debug.txt to debug
+			*/
 			FILE *f = fopen("debug.txt", "a");
 			if (f == NULL)
 			{
@@ -40,13 +43,14 @@ int			get_key_hook()
 			    exit(1);
 			}
 
-			/* print some text */
-			const char *text = "Write this to the file";
-			fprintf(f, "Some text: %s\n", text);
-
+			t_lstd	*lst = term->cmd.first;
+			while (lst)
+			{
+				fprintf(f, "%s", (char*)lst->content);
+				lst = lst->next;
+			}
+			fprintf(f, "\n");
 			fclose(f);
-			// refresh_line_from_cursor();
-			// printf("\n%zd | %d\n", term->cursor_padd, term->winsize.ws_col);
 		}
 		else if (key == K_DELETE || key == K_BACKSPACE)
 			cursor_delete(key);
