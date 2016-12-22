@@ -14,53 +14,30 @@ void	ft_restore_cursor()
 	tputs(RESTORE_CURSOR, 0, tputc);
 }
 
-int		refresh_line_from_cursor()
+int		refresh_line_from_cursor(int cursor_pos)
 {
 	t_term	*term;
-	t_lstd	*tmp;
+	t_lstd	*cmd;
 
 	term = ft_term();
-	tmp = term->cmd.cursor->prev;
+	cmd = term->cmd.cursor;
+	if (cmd->prev)
+		cmd = cmd->prev;
+	if (cursor_pos == CURSOR_PREV)
+	{
+		if (cmd && cmd->next)
+			cmd = cmd->next;
+		ft_tputs("le");
+	}
+	tputs(SAVE_CURSOR, 0, tputc);
 	tputs(ERASE_DOWN, 0, tputc);
-	ft_save_cursor();
-	while (tmp->content)
+	while (cmd && cmd->content != NULL)
 	{
-		tputs(tmp->content, 0, tputc);
-		// if (term->cursor_padd > term->winsize.ws_col)
-		// {
-		// 	tmp = tmp->prev;
-		// 	term->cursor_padd = 1;
-		// 	ft_tputs("cr");	
-		// 	ft_tputs("do");
-		// 	ft_save_cursor();
-		// }
-		tmp = tmp->next;
+		tputs(cmd->content, 0, tputc);
+		cmd = cmd->next;
 	}
-	if (term->cmd.cursor->content != NULL)
-	{
-		ft_restore_cursor();
+	tputs(RESTORE_CURSOR, 0, tputc);
+	if (cursor_pos == CURSOR_NEXT)
 		ft_tputs("nd");
-	}
 	return (1);
 }
-
-// int		printable_key_hook(int key)
-// {
-// 	char str[2];
-// 	t_term	*term;
-
-// 	if (add_key_to_cmd(key) == -1)
-// 		exit(EXIT_FAILURE);
-// 	term = ft_term();
-// 	term->cursor_padd++;
-// 	str[0] = key;
-// 	str[1] = 0;
-// 	tputs(str, 0, tputc);
-// 	if (term->cursor_padd > term->winsize.ws_col)
-// 	{
-// 		term->cursor_padd = 1;
-// 		ft_tputs("cr");	
-// 		ft_tputs("do");
-// 	}
-// 	return (1);
-// }

@@ -34,6 +34,8 @@
 # define K_CTRL_D 4
 # define K_CTRL_E 5
 
+enum e_cursor_pos {CURSOR_NEXT, CURSOR_PREV};
+
 typedef struct termios	t_termios;
 typedef struct winsize	t_winsize;
 
@@ -76,7 +78,7 @@ void	winsize(void);
 void	ft_error(char *err);
 void	init_signals(void);
 
-int		refresh_line_from_cursor();
+int		refresh_line_from_cursor(int cursor_pos);
 
 void	ft_restore_cursor();
 
